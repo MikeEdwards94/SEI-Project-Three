@@ -92,17 +92,7 @@ const ParkShow = ( { userData } ) => {
       }
 
       
-      {userIsAuthenticated 
-        ?
-        <div className='centerButton'>
-          <ParkWishlist 
-            userData = {userData}
-            park = {park}
-          />
-        </div>
-        :
-        <p>Login to save</p>
-      }
+
       <div className="ui raised very padded text segment margin-container">
         <h2 className="ui header">{name}</h2>
         <h3 className="ui header">{region} - {country} <i className={`${lowerCaseCountry} flag`}></i></h3>
