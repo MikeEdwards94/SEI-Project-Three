@@ -13,6 +13,6 @@
     "seed": "node db/seeds.js",
 	  "dev": "nodemon",
     "start": "node index.js",
-    "build": "cd frontend && yarn install && yarn run build"
+    "build": "cd client && yarn install && yarn run build"
   }
 }
