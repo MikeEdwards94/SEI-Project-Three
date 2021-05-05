@@ -18,6 +18,6 @@
     "serve": "npx nodemon index.js",
     "seed": "node db/seeds.js",
       "dev": "nodemon",
-    "build": "cd ../client && npm install && npm run build"
+    "build": "cd ../client && yarn install && yarn run build"
   }
 }
