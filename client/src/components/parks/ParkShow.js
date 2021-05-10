@@ -75,14 +75,14 @@ const ParkShow = ( { userData } ) => {
         <img src={image[0]} alt={name} width="100%"/>
       </div>
       <br/>
-      {userIsAuthenticated &&
+      {/* {userIsAuthenticated &&
         <div className='centerButton'>
           <ParkWishlist 
             userData = {userData}
             park = {park}
           />
         </div>
-      }
+      } */}
       { !userIsAuthenticated() && 
         <div className="centerLoginToAddWishlist">
           <Link to={'/login'}>

@@ -20,11 +20,11 @@ const recommendationForm = ({ handleChange, handleImageUrl, handleSubmit, formDa
   
 
   if (!parkData) return null
-  
+  console.log(formData)
   return (
     <>
 
-      <div className="ui star rating" data-rating="3"></div>
+      
       <div className="ui container raised  segment registerFrom">
         <form onSubmit={handleSubmit} className="ui form">
           <h2 className="label">{parkData.name}</h2>
@@ -66,7 +66,7 @@ const recommendationForm = ({ handleChange, handleImageUrl, handleSubmit, formDa
           </div>
 
           
-          <button className="ui basic button" type="submit">  <i className="paper plane outline icon"/> Submit</button>
+          <p className="submit-recc"> <button className="ui blue button " type="submit">  <i className="paper plane outline icon"/> Submit</button></p>
         </form>
       </div>
     </>
