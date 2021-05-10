@@ -3,6 +3,9 @@ import mongoose from 'mongoose'
 import { port, dbURI } from './config/environments.js'
 import router from './config/router.js'
 
+import path from 'path'
+const __dirname = path.resolve()
+
 const app =  express()
 
 const startServer = async () =>{
@@ -14,8 +17,13 @@ const startServer = async () =>{
     await mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
 
     // * body parser 
+
+    app.use(express.static(`${__dirname}/../client/build`))
+
     app.use(express.json())
 
+
+    
     // * logger middlewear 
 
     app.use((req, _res, next) =>{
@@ -24,6 +32,8 @@ const startServer = async () =>{
     })
 
     app.use('/api', router)
+
+    app.use('/*', (_, res) => res.sendFile(`${__dirname}/../client/build/index.html`))
 
     // * server
 

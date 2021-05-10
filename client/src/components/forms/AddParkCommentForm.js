@@ -25,14 +25,15 @@ const AddParkCommentForm = () => {
     event.preventDefault()
     
     await axios.post(
-      `/api/parks/${params.id}/comments/`,
+      `/api/parks/${params.id}/comments`,
       formData,
       {
         headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` }
       }
     )
+    console.log(params.id)
+    history.push('/')
     history.push(`/parks/${params.id}`)
-    window.location.reload()
   }
 
   return (

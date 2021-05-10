@@ -40,27 +40,18 @@ const UserProfile = () => {
 
   // * function to remove the item from the wishlist 
   const removeFromWishlist = (event)=>{
-<<<<<<< HEAD
-=======
     console.log('event.target.value', event.target.value)
->>>>>>> development
     setConfirm('confirm')
     const filteredWishlistConst = wishList.filter(filter => {
       return filter !== event.target.value
     })
     const newWishList = { [event.target.name]: filteredWishlistConst }
     setUpdateWishlist(newWishList)
-<<<<<<< HEAD
-  }
-
-  const handleConfirm = async () =>{
-=======
     
   }
   
   const handleConfirm = async () =>{
     console.log('updated wish list', wishlist)
->>>>>>> development
     setConfirm('')
     await axios.put(
       `/api/profile/${userData.data.id}`,

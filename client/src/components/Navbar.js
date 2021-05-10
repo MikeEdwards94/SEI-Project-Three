@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-git aimport React from 'react'
-=======
 import React from 'react'
->>>>>>> development
 import { Link, useHistory } from 'react-router-dom'
 import { userIsAuthenticated, userID } from '../helpers/auth'
 
