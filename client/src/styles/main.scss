@@ -1,0 +1,565 @@
+// @import '~bulma/bulma.sass';
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
+// @import '~bulma/bulma.sass';
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
+
+
+#root{
+  // background: #348F50;  /* fallback for old browsers */
+  // background: -webkit-linear-gradient(to right, #56B4D3, #348F50);  /* Chrome 10-25, Safari 5.1-6 */
+  // background: linear-gradient(to right, #56B4D3, #348F50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  font-family: 'Julius Sans One', sans-serif ;
+
+}
+
+
+
+body {
+  // height: 100vh;
+  margin: 10px;
+  background: #348F50;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #56B4D3, #348F50);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #56B4D3, #348F50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.wholePage-login{
+  height: 100vh !important;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+h1.home {
+  text-align: center;
+  font-family: 'Julius Sans One', sans-serif;
+  padding-top: 20vh;
+  padding-bottom: 10px;
+  font-size: 50px;
+  color: #f8f9fa;
+}
+
+h2.home {
+  text-align: center;
+  font-family: 'Julius Sans One', sans-serif;
+  font-size: 30px;
+  color: #f8f9fa;
+}
+
+
+
+.scroll-down {
+  color: white;
+  padding-left: 50vw;
+  padding-top: 40vh;
+  :hover{
+    animation: animate__shakeY;
+    animation-duration: 3s;
+  }
+  
+  
+}
+
+.down-link {
+  color: inherit;
+  :hover {
+    color: white;
+  }
+}
+
+
+.ui.grid.home {
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  
+}
+.ui.celled.grid {
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 40px;
+}
+
+//  Donation section on homepage
+
+.donation-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h4 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 25px;
+    font-family: 'Julius Sans One', sans-serif;
+    text-align: center;
+  }
+  p {
+    font-size: 17px;
+    font-family: 'Julius Sans One', sans-serif;
+  }
+  h3 {
+    font-family: 'Julius Sans One', sans-serif;
+    font-size: 20px;
+  }
+  button {
+    text-align: center;
+  }
+}
+
+.donation-buttons-group {
+  margin-bottom: 20px;
+  
+}
+
+.donation-confirmation-buttons {
+  margin-bottom: 20px;
+}
+
+
+
+.map-container {
+  margin: 30px;
+}
+.image-container {
+  width: 40%;
+}
+.image-segment {
+  width: 45%;
+}
+
+div.container{
+  min-height: 100vh;
+  background-position-y: bottom;
+}
+
+.app{
+  display: flex;
+  overflow-x: auto;
+
+}
+
+.ui.menu.ui-menu-margin{
+  margin-bottom: 0 ;
+}
+
+
+.weatherContainer{
+display: flex;
+flex-direction: column;
+overflow-x: auto;
+
+}
+.wishlist-items{
+  display: flex;
+  overflow-x: auto;
+}
+.parks-saved{
+  margin: 10px;
+  min-width: 40vw;
+}
+
+
+.day{
+  display: flex;
+}
+
+.weather-day{
+  margin: 5px;
+  margin-left: 10px;
+  min-width: 40vw;
+  padding: 10px;
+}
+
+.reccomendation-box{
+  display: flex;
+  overflow-x: auto;
+ 
+
+}
+
+.card-box{
+  display: flex;
+  min-width: 50vw;
+  flex-direction: column;
+  margin-right: 10px;
+}
+
+// Regions select page
+
+h1.regions-title {
+  text-align: center;
+  font-family: 'Julius Sans One', sans-serif;
+  font-size: 40px;
+}
+
+p.single-region-title {
+  font-family: 'Julius Sans One', sans-serif;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.region-slider-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100vw;
+  margin: 20px;
+  padding: 50px;
+}
+
+.region-slider {
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+  align-content: center;
+  text-align: center;
+}
+
+.slider {
+  position: relative;
+  height: 33vh;
+  width: 33vw;
+}
+// .slider p {
+//   text-align:center;
+//   vertical-align: middle;
+//   position:absolute;
+//   top: 0;
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+//   transform:translate(0%,-50%);
+//   -webkit-transform:translate(0%,-50%);
+//   color:#FFFFFF;
+//   font-family:Arial;
+//   text-transform:uppercase;
+//   visibility:hidden;
+//   opacity: 0;
+
+// }
+
+// .slider p:hover {
+//   visibility: visible;
+//   opacity: 1;
+// }
+
+.region-slider:hover img {
+  filter: brightness(0.5);
+    -webkit-filter:brightness(0.5);
+    -moz-filter:brightness(0.5);
+}
+
+
+// .region-slider:hover p {
+  
+// }
+
+
+.slide {
+  position: absolute;
+  // top: 0;
+  // left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: .3s ease;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.slide.active {
+  opacity: 1;
+  transition-duration: .2s;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.slider-image {
+  position: absolute;
+  // top: 0;
+  // left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+//  User profile
+
+h1.profile-title {
+  text-align: center;
+  padding-top: 70px;
+  font-family: 'Julius Sans One', sans-serif;
+}
+
+h2.user-info-title, h3.user-info-title {
+  font-family: 'Julius Sans One', sans-serif;
+  text-decoration: none;
+  color: black;
+}
+.user-info-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 120px;
+  margin-bottom: 150px;
+}
+
+.profile-image-container {
+  display: flex;
+  justify-content: center;
+  height: 200px;
+  width: 200px;
+}
+
+.profile-edit-button{
+  display: flex;
+  margin: 20px;
+  justify-content: center;
+}
+
+
+
+.wishlist-items{
+  display: flex;
+  overflow-x: auto;
+  margin-top: 40px;
+  min-height: 500px;
+  border: 1px solid darkgray;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.parks-saved{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  min-width: 40vw;
+  text-align: center;
+
+}
+.remove-park {
+  width: 250px;
+}
+
+.wishlist-img {
+  height: 400px;
+  width: 400px;
+  margin-bottom: 40px;
+}
+
+.reccAddAvatar {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 5px;
+  .author {
+    margin-left: 5px;
+  }
+  
+}
+
+.home-background{
+  background-image: url("https://media.tacdn.com/media/attractions-content--1x-1/0b/17/2e/77.jpg") ;
+  background-size:cover;
+  background-repeat: no-repeat;
+} 
+
+
+.margin-container {
+  margin: 10px 5% 10px 5% !important;
+  h1 {
+    text-align: center;
+    font-family: 'Julius Sans One', sans-serif;
+    padding-top: 10px;
+  }
+}
+// .image-index-container {
+//   object-fit: cover;
+// }
+// .eq-card {
+//   height: 400px
+// }
+// .content-height {
+//   height: 100px !important;
+// }
+// .cardImage {
+// height: 200px;
+// object-fit: contain;
+// }
+// styling for the register form
+  // padding: 15px;
+//  border: 1px solid grey ;
+// }
+  div.container.registerFrom {
+    min-height: 70vh;
+}
+.container.registerFrom {
+  height: 60vh !important;
+  width: 45vw !important;
+  margin-top: 10vh !important;
+}
+  div.container.editComment {
+    min-height: 40vh;
+}
+.container.editComment {
+  height: 20vh !important;
+  width: 35vw !important;
+  margin-top: 10vh !important;
+}
+
+//styling for loging form 
+
+.container.loginForm{
+  height: 30vh;
+  width: 70vw !important;
+  margin-top: 25vh !important;
+}
+
+.register-form-header{
+  text-align: center;
+  margin-bottom: -5vh;
+  margin-top: 7vh !important;
+  font-family: 'Julius Sans One', sans-serif;
+}
+
+.header-recc{
+  text-align: center;
+  
+}
+
+
+
+.header-comment{
+  margin-top: 5vh ;
+  // margin-right: -15vw;
+  text-align: center;
+}
+.header-recc-top{
+  text-align: center;
+  margin-top: 7vh !important;
+  margin-bottom: -7vh !important;
+}
+
+a.delete{
+  color: red;
+}
+a.delete:hover{
+  text-decoration: underline;
+}
+
+.image-upload-image{
+  width: 150px;
+}
+
+.registerConfirmBox {
+  font-family: 'Julius Sans One', sans-serif;
+  font-size: 15px;
+  padding: 20px;
+}
+
+// Park Card for each region page
+
+.content-height {
+  height: 70px;
+  h3 {
+    font-family: 'Julius Sans One', sans-serif;
+    text-align: center;
+    color: black;
+    padding-top: 5px;
+  }
+  a:hover {
+    color: black;
+  }
+}
+
+
+// .image-index-container {
+//   height: 400px;
+//   img {
+//     height: 400px;
+//   }
+// }
+
+// /navbar
+.navbar-menu{
+  margin-bottom: 0px !important;
+  border-radius: 0px !important;
+  // background-color: rgb(152, 172, 143) !important;
+  // background: #076585;  /* fallback for old browsers */
+  background-color: #6c809a !important;  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #E4E5E6, #00416A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+// footer
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+  padding: 70px;
+  // position: fixed;
+  // bottom: 0;
+  font-family: 'Julius Sans One', sans-serif;
+  color: #6c809a;
+  a {
+    text-decoration: none;
+    color: #6c809a
+  }
+  a:hover {
+    color:inherit;
+  }
+}
+
+.ui.reply.form {
+  padding-left: 30px;
+}
+
+.ui.dividing.header {
+  font-family: 'Julius Sans One', sans-serif;
+}
+img {
+  object-fit: cover;
+}
+.juliusFontCenter {
+  text-align: center;
+  font-family: 'Julius Sans One', sans-serif;
+  color: black;
+}
+.juliusFontCenterBig {
+  text-align: center;
+  font-size: 40px;
+  font-family: 'Julius Sans One', sans-serif;
+}
+.juliusFontLeft {
+  text-align: center;
+  font-family: 'Julius Sans One', sans-serif;
+}
+.centerButton {
+  display: flex;
+  justify-content: center;
+}
+
+.centerLoginToAddWishlist {
+  text-align: center;
+  padding-bottom: 10px;
+  color: #6c809a;
+  text-decoration: none;
+}
