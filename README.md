@@ -4,6 +4,9 @@
 
 For the third project at GA we were tasked with building a full stack MERN application in a group of three over the period of one week.
 
+<h3>Deployment</h3>
+
+The link for the deployed project can be found here: https://natural-wanderer.netlify.app/
 
 <h3>Technologies Used</h3>
 
@@ -63,10 +66,155 @@ The last phase of our planning was to list any tasks on a Trello Board. This hel
 
 <h3>Backend</h3>
 
+We started on the backend first, with the aim to get this done within a few days ideally. To begin we created a function to handle our server below. We would later return to this function to add users, recommendations and comments. 
 
+```
+const seedDatabase = async () => {
+  try {
+    // Connect to database
+    await mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+    console.log('Database has connected succesfully')
+
+    // Clear the db
+    await mongoose.connection.db.dropDatabase()
+    console.log('DB dropped')
+  
+    // add parks to db
+    const parks = await Park.create(parksWithUsers, parksWithComments, parksWithRecommendations)
+    console.log('Parks >', parks)
+    console.log(`DB seeded with ${parks.length} parks`)
+
+    // close the connection
+    await mongoose.connection.close()
+    console.log('Bye')
+
+
+  } catch (err) {
+    console.log(err)
+    await mongoose.connection.close()
+    console.log('Bye')
+  }
+}
+seedDatabase()
+```
+
+Next we started building out the schemas we would be using for our models as well as some basic authentication for a user to be able to login and register. Then we moved onto adding in some Routes for us to be able to GET, UPDATE or DELETE from the database. First we built out the controller for the parks and then followed this up by building out a router to grab this function. A small part of this shown below:
+
+```
+const router = express.Router()
+
+router.route('/parks')
+  .get(getAllParks)
+
+router.route('/parks/:id')
+  .get(getOnePark)
+  
+  
+// INDEX ROUTE
+export const getAllParks = async (_req, res) => {
+  const parks = await Park.find()
+  return res.status(200).json(parks)
+}
+
+// SHOW ROUTE
+export const getOnePark = async (req, res) => {
+  try {
+    const { id } = req.params
+    const singlePark = await Park.findById(id).populate('comments.owner').populate('recommendations.owner')
+    if (!singlePark) {
+      throw new Error()
+    }
+    return res.status(200).json(singlePark)
+  } catch (err) {
+    console.log('Something went wrong!')
+    console.log(err)
+    return res.status(404).json({ 'message': 'Not found' })
+  }
+}
+```
+
+After some extensive testing in Insomnia, we were able to all confirm that the requests were coming through okay. We managed to get the backend done by the third day, which left us a lot of time to work on the front-end.
 
 <h3>Frontend</h3>
 
+Over the next few days we all worked on different parts although we would sometimes swap around on the areas if we wanted to get some experience on a particular area or would work together if a component posed a challenge. One of the main areas of focus for me would be the park show page. Firstly we needed to pull in the data by making a GET request as seen below. This would then allow us manipulate all the park data to show blocks of info and images of the park. 
+
+```
+  useEffect(() =>{
+    const getData = async () => {
+      const { data } = await axios.get(`/api/parks/${params.id}`)
+      setPark(data)
+    }
+    
+    getData()
+  }, [])
+ ```
+
+One of the features I worked most on is the implementation of MapBox within the ParkShow page. We had previously added in the latitude and longitude into the parkSchema so that we had a direct location for all the parks in the database. I then used these co-ordinates to set a viewport to center the map on, so the user would be looking specifically at the national park. I would also use these to add in a map marker for the national park when the use zoomed far out as the natural map marker for the national parks on MapBox would be lost when the user zoomed out a little too far. I also added in a `onViewportChange` to the JSX so when the user moved the map it would also update the map allowing them to explore.
+
+```
+  const [viewport, setViewport] = useState({
+    latitude: latitude,
+    longitude: longitude,
+    zoom: 10
+  })
+
+  const permaLat = latitude
+  const permaLong = longitude
+  
+// JSX
+  {viewport ?
+        <ReactMapGL
+          mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
+          height='400px'
+          width='400px'
+          mapStyle='mapbox://styles/mapbox/outdoors-v11'
+          {...viewport}
+          onViewportChange={(viewport) => setViewport(viewport)}
+        >
+          {viewport.zoom < 7 &&
+          <Marker key={location.id} longitude={permaLong} latitude={permaLat}>
+            📍{name}
+          </Marker>
+          }
+        </ReactMapGL>
+        :
+        <h1>Loading your location...</h1>
+      }
+```
+Expanding on the MapBox as part of a post-MVP feature both I and Jonty worked on implementing a secondary Mapbox which would allow users to plot a route. This would allow users to both create and update routes as they pleased. Ideally we would've liked to have kept expanding on this feature adding in more detail to palces to see, or ways to save or export routes for the user to keep, however as this was a late addition to the project we didn't have enough time to add much more.
+
+I would also work on some of the forms in regards to leaving a comment, as well as the login/ register pages. Although it would be unlikely to occur we wanted to add in some error handling in case a user entered in thei details incorrectly. To do this we would catch any errors from the database when making a login or register request and commit this to state. From here we could create a condition which if contained errors would display an error message received from the backend, which required some minor tweaks to the schemas in the backend to do so. From here the error would display to the user telling them specifically which part of their registration was incorrect.
+
+```
+// State holding errors
+  const [errors, setErrors] = useState({
+    email: '',
+    fullName: '',
+    password: '',
+    username: '',
+    passwordConfirmation: ''
+  })
+  
+// Function to handle registration submission
+    const handleSubmit = async (event) => {
+    event.preventDefault()
+    try {
+      const response = await axios.post('/api/register', formData)
+      window.localStorage.setItem('token', response.data.token)
+      setTimeout(() => {
+        history.push('/login')
+      }, 3000)
+      
+    } catch (err) {
+      console.log(err.response)
+      setErrors(err.response.data.errors)
+    }
+  }
+  
+// JSX error returned to user in form
+    { errors.username && <p className="help is-danger">{errors.username.message}</p> }
+```
 
 <h3>Division of Work</h3>
 
